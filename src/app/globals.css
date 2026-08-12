@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-aelora-bg: #0B0B0A;
+  --color-aelora-ivory: #F3EFE7;
+  --color-aelora-beige: #D8D0C2;
+  --color-aelora-taupe: #A99A84;
+  --color-aelora-text-secondary: #6E675D;
+  --color-aelora-gold: #B69A68;
+
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-manrope);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0B0B0A;
+    --foreground: #F3EFE7;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #F3EFE7;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease-out;
+}
+
+.custom-cursor.hovering {
+  transform: scale(3);
+  mix-blend-mode: difference;
+}
+
+/* Image Reveal Classes */
+.clip-reveal {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.clip-reveal.visible {
+  clip-path: inset(0 0 0 0);
 }

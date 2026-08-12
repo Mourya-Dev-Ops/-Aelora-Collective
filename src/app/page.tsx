@@ -2,68 +2,58 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="flex flex-col min-h-screen">
+      {/* Section 1 - Cinematic Hero */}
+      <section className="relative h-screen w-full flex flex-col justify-between p-6 md:p-12 overflow-hidden">
+        {/* Background placeholder */}
+        <div className="absolute inset-0 bg-aelora-bg z-0">
+           {/* Placeholder for cinematic image/video */}
+           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        </div>
+
+        {/* Minimal Navigation */}
+        <header className="relative z-10 flex justify-between items-start w-full uppercase text-xs tracking-widest font-medium">
+          <div className="font-display text-xl md:text-2xl tracking-wide uppercase leading-tight">
+            Aelora<br />Collective
+          </div>
+          <nav className="hidden md:flex gap-12 text-aelora-ivory/80">
+            <a href="#" className="hover:text-aelora-ivory transition-colors">Weddings</a>
+            <a href="#" className="hover:text-aelora-ivory transition-colors">Celebrations</a>
+            <a href="#" className="hover:text-aelora-ivory transition-colors">Experiences</a>
+          </nav>
+          <button className="text-aelora-ivory hover:text-aelora-gold transition-colors">
+            Menu
+          </button>
+        </header>
+
+        {/* Main Statement */}
+        <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center mt-12">
+          <h1 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase tracking-tight leading-[0.9] mb-8">
+            We create moments <br />
+            <span className="italic text-aelora-beige lowercase font-light tracking-normal">that become memories.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <button className="mt-8 text-xs md:text-sm tracking-[0.2em] uppercase border-b border-aelora-gold/50 pb-1 hover:text-aelora-gold hover:border-aelora-gold transition-all duration-300">
+            Plan your celebration &rarr;
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Explore Secondary */}
+        <div className="relative z-10 flex justify-center pb-4">
+          <span className="text-[10px] md:text-xs uppercase tracking-widest text-aelora-ivory/50 hover:text-aelora-ivory transition-colors cursor-pointer">
+            Explore our work &darr;
+          </span>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Section 2 - Brand Introduction */}
+      <section className="min-h-[70vh] bg-aelora-ivory text-aelora-bg flex flex-col items-center justify-center p-8 md:p-24 text-center">
+        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-tight mb-8 max-w-4xl">
+          Celebrations,<br />thoughtfully imagined.
+        </h2>
+        <p className="max-w-xl text-aelora-text-secondary text-sm md:text-base leading-relaxed">
+          Aelora Collective is a luxury event design and planning studio curating extraordinary celebrations across the globe. From intimate private gatherings to grand weddings, we believe every event should feel like a cinematic experience.
+        </p>
+      </section>
+    </main>
   );
 }
