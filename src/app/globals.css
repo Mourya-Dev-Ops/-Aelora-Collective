@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-aelora-bg: #0B0B0A;
-  --color-aelora-ivory: #F3EFE7;
-  --color-aelora-beige: #D8D0C2;
-  --color-aelora-taupe: #A99A84;
-  --color-aelora-text-secondary: #6E675D;
-  --color-aelora-gold: #B69A68;
+  --color-aelora-bg: #0F1115;
+  --color-aelora-bg-secondary: #1E222A;
+  --color-aelora-text: #F8FAFC;
+  --color-aelora-text-muted: #8B949E;
+  --color-aelora-accent: #D1D5DB;
 
   --font-display: var(--font-cormorant);
-  --font-body: var(--font-manrope);
+  --font-body: var(--font-inter);
 }
 
 @layer base {
   :root {
-    --background: #0B0B0A;
-    --foreground: #F3EFE7;
+    --background: #0F1115;
+    --foreground: #F8FAFC;
   }
 }
 
@@ -34,7 +33,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #F3EFE7;
+  background-color: #F8FAFC;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
@@ -44,14 +43,4 @@ body {
 .custom-cursor.hovering {
   transform: scale(3);
   mix-blend-mode: difference;
-}
-
-/* Image Reveal Classes */
-.clip-reveal {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.clip-reveal.visible {
-  clip-path: inset(0 0 0 0);
 }
