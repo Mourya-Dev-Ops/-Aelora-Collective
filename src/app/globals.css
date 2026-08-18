@@ -1,28 +1,95 @@
 @import "tailwindcss";
 
 @theme {
-  --color-aelora-bg: #0F1115;
-  --color-aelora-bg-secondary: #1E222A;
-  --color-aelora-text: #F8FAFC;
-  --color-aelora-text-muted: #8B949E;
-  --color-aelora-accent: #D1D5DB;
+  --color-aelora-bg: var(--theme-bg);
+  --color-aelora-bg-secondary: var(--theme-bg-secondary);
+  --color-aelora-text: var(--theme-text);
+  --color-aelora-text-muted: var(--theme-text-muted);
+  --color-aelora-accent: var(--theme-accent);
 
-  --font-display: var(--font-cormorant);
-  --font-body: var(--font-inter);
+  --font-display: var(--theme-font-display);
+  --font-body: var(--theme-font-body);
 }
 
 @layer base {
+  /* Theme 1: Pure Monochrome (Default) */
   :root {
-    --background: #0F1115;
-    --foreground: #F8FAFC;
+    --theme-bg: #000000;
+    --theme-bg-secondary: #0A0A0A;
+    --theme-text: #FFFFFF;
+    --theme-text-muted: #666666;
+    --theme-accent: #FFFFFF;
+    --theme-font-display: var(--font-bodoni);
+    --theme-font-body: var(--font-inter);
+    --background: var(--theme-bg);
+    --foreground: var(--theme-text);
+  }
+
+  /* Theme 2: Dark Emerald & Cream */
+  .theme-emerald {
+    --theme-bg: #0D1F17;
+    --theme-bg-secondary: #142A20;
+    --theme-text: #FFF8EF;
+    --theme-text-muted: #7A8E82;
+    --theme-accent: #C8A96E;
+    --theme-font-display: var(--font-cormorant);
+    --theme-font-body: var(--font-dmsans);
+    --background: var(--theme-bg);
+    --foreground: var(--theme-text);
+  }
+
+  /* Theme 3: Arctic White */
+  .theme-arctic {
+    --theme-bg: #FAFAFA;
+    --theme-bg-secondary: #F0F0F0;
+    --theme-text: #1A1A1A;
+    --theme-text-muted: #999999;
+    --theme-accent: #1A1A1A;
+    --theme-font-display: var(--font-playfair);
+    --theme-font-body: var(--font-inter);
+    --background: var(--theme-bg);
+    --foreground: var(--theme-text);
+  }
+
+  /* Theme 4: Midnight Navy & Silver */
+  .theme-navy {
+    --theme-bg: #0A0E1A;
+    --theme-bg-secondary: #131829;
+    --theme-text: #E8ECF2;
+    --theme-text-muted: #6B7A99;
+    --theme-accent: #C0C7D4;
+    --theme-font-display: var(--font-cormorant);
+    --theme-font-body: var(--font-inter);
+    --background: var(--theme-bg);
+    --foreground: var(--theme-text);
+  }
+
+  /* Theme 5: Warm Noir & Champagne */
+  .theme-noir {
+    --theme-bg: #0C0A08;
+    --theme-bg-secondary: #1A1714;
+    --theme-text: #F5F0E8;
+    --theme-text-muted: #8A7E70;
+    --theme-accent: #C9A96E;
+    --theme-font-display: var(--font-bodoni);
+    --theme-font-body: var(--font-manrope);
+    --background: var(--theme-bg);
+    --foreground: var(--theme-text);
   }
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--theme-font-body), sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--theme-font-display), serif;
 }
 
 /* Custom Cursor Styles */
@@ -30,17 +97,22 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background-color: #F8FAFC;
+  background-color: var(--theme-accent);
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.1s ease-out, background-color 0.5s ease;
 }
 
 .custom-cursor.hovering {
-  transform: scale(3);
-  mix-blend-mode: difference;
+  transform: scale(4);
+  background-color: transparent;
+  border: 1px solid var(--theme-accent);
+}
+
+.hairline-border {
+  border-color: var(--theme-accent);
+  opacity: 0.2;
 }
