@@ -1,118 +1,256 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════
+   AELORA COLLECTIVE — MASTER DESIGN SYSTEM
+   Theme: Warm Noir & Champagne (Tom Ford)
+   "One World. Many Celebrations."
+   ═══════════════════════════════════════════════════════════ */
+
 @theme {
+  /* Master Brand Colors */
   --color-aelora-bg: var(--theme-bg);
   --color-aelora-bg-secondary: var(--theme-bg-secondary);
   --color-aelora-text: var(--theme-text);
   --color-aelora-text-muted: var(--theme-text-muted);
   --color-aelora-accent: var(--theme-accent);
 
-  --font-display: var(--theme-font-display);
-  --font-body: var(--theme-font-body);
+  /* World-Level Overrides (set by WorldProvider) */
+  --color-world-accent: var(--world-accent);
+  --color-world-secondary: var(--world-secondary);
+
+  /* Font Families */
+  --font-display: var(--font-bodoni);
+  --font-body: var(--font-manrope);
 }
 
 @layer base {
-  /* Theme 1: Pure Monochrome (Default) */
+  /* ═══ MASTER THEME: Warm Noir & Champagne ═══ */
   :root {
-    --theme-bg: #000000;
-    --theme-bg-secondary: #0A0A0A;
-    --theme-text: #FFFFFF;
-    --theme-text-muted: #666666;
-    --theme-accent: #FFFFFF;
-    --theme-font-display: var(--font-bodoni);
-    --theme-font-body: var(--font-inter);
-    --background: var(--theme-bg);
-    --foreground: var(--theme-text);
-  }
-
-  /* Theme 2: Dark Emerald & Cream */
-  .theme-emerald {
-    --theme-bg: #0D1F17;
-    --theme-bg-secondary: #142A20;
-    --theme-text: #FFF8EF;
-    --theme-text-muted: #7A8E82;
-    --theme-accent: #C8A96E;
-    --theme-font-display: var(--font-cormorant);
-    --theme-font-body: var(--font-dmsans);
-    --background: var(--theme-bg);
-    --foreground: var(--theme-text);
-  }
-
-  /* Theme 3: Arctic White */
-  .theme-arctic {
-    --theme-bg: #FAFAFA;
-    --theme-bg-secondary: #F0F0F0;
-    --theme-text: #1A1A1A;
-    --theme-text-muted: #999999;
-    --theme-accent: #1A1A1A;
-    --theme-font-display: var(--font-playfair);
-    --theme-font-body: var(--font-inter);
-    --background: var(--theme-bg);
-    --foreground: var(--theme-text);
-  }
-
-  /* Theme 4: Midnight Navy & Silver */
-  .theme-navy {
-    --theme-bg: #0A0E1A;
-    --theme-bg-secondary: #131829;
-    --theme-text: #E8ECF2;
-    --theme-text-muted: #6B7A99;
-    --theme-accent: #C0C7D4;
-    --theme-font-display: var(--font-cormorant);
-    --theme-font-body: var(--font-inter);
-    --background: var(--theme-bg);
-    --foreground: var(--theme-text);
-  }
-
-  /* Theme 5: Warm Noir & Champagne */
-  .theme-noir {
     --theme-bg: #0C0A08;
     --theme-bg-secondary: #1A1714;
     --theme-text: #F5F0E8;
     --theme-text-muted: #8A7E70;
     --theme-accent: #C9A96E;
-    --theme-font-display: var(--font-bodoni);
-    --theme-font-body: var(--font-manrope);
-    --background: var(--theme-bg);
-    --foreground: var(--theme-text);
+    --background: #0C0A08;
+    --foreground: #F5F0E8;
+
+    /* World defaults (inherit master unless overridden) */
+    --world-accent: #C9A96E;
+    --world-secondary: #1A1714;
+    --world-overlay: transparent;
   }
 }
 
+/* ═══ BODY ═══ */
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--theme-font-body), sans-serif;
+  font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* ═══ TYPOGRAPHY ═══ */
 h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--theme-font-display), serif;
+  font-family: var(--font-display), serif;
 }
 
-/* Custom Cursor Styles */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+/* ═══ SELECTION ═══ */
+::selection {
   background-color: var(--theme-accent);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease-out, background-color 0.5s ease;
+  color: var(--theme-bg);
 }
 
-.custom-cursor.hovering {
-  transform: scale(4);
-  background-color: transparent;
-  border: 1px solid var(--theme-accent);
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-text-muted);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent);
 }
 
-.hairline-border {
-  border-color: var(--theme-accent);
+/* ═══ ANIMATION KEYFRAMES ═══ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes parallaxDrift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ═══ UTILITY CLASSES ═══ */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 20s ease-out forwards;
+}
+
+.animate-line-grow {
+  animation: lineGrow 1.2s ease-out forwards;
+  transform-origin: top center;
+}
+
+/* Stagger delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ═══ HAIRLINE DIVIDERS ═══ */
+.hairline {
+  height: 1px;
+  background-color: var(--theme-accent);
+  opacity: 0.15;
+}
+
+.hairline-vertical {
+  width: 1px;
+  background-color: var(--theme-accent);
   opacity: 0.2;
+}
+
+/* ═══ IMAGE TREATMENTS ═══ */
+.image-cinematic {
+  filter: contrast(1.05) saturate(0.9);
+}
+
+.image-warm {
+  filter: contrast(1.02) saturate(0.85) sepia(0.08);
+}
+
+/* ═══ PERFORMANCE FALLBACKS ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-slow-zoom {
+    animation: none !important;
+  }
+}
+
+/* ═══ DEV MODE: Theme Switcher (preserved for presentations) ═══ */
+.theme-emerald {
+  --theme-bg: #0D1F17;
+  --theme-bg-secondary: #142A20;
+  --theme-text: #FFF8EF;
+  --theme-text-muted: #7A8E82;
+  --theme-accent: #C8A96E;
+  --background: #0D1F17;
+  --foreground: #FFF8EF;
+}
+
+.theme-arctic {
+  --theme-bg: #FAFAFA;
+  --theme-bg-secondary: #F0F0F0;
+  --theme-text: #1A1A1A;
+  --theme-text-muted: #999999;
+  --theme-accent: #1A1A1A;
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+}
+
+.theme-navy {
+  --theme-bg: #0A0E1A;
+  --theme-bg-secondary: #131829;
+  --theme-text: #E8ECF2;
+  --theme-text-muted: #6B7A99;
+  --theme-accent: #C0C7D4;
+  --background: #0A0E1A;
+  --foreground: #E8ECF2;
+}
+
+.theme-monochrome {
+  --theme-bg: #000000;
+  --theme-bg-secondary: #0A0A0A;
+  --theme-text: #FFFFFF;
+  --theme-text-muted: #666666;
+  --theme-accent: #FFFFFF;
+  --background: #000000;
+  --foreground: #FFFFFF;
 }
